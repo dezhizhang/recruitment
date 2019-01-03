@@ -19,8 +19,8 @@ ReactDom.render(
 	(<Provider store={store}>
 		<BrowserRouter>
 			<Switch>
-                <Route path='/login' exact component={Login}></Route>
-                <Route path='/register' exact component={Register}></Route>
+                <Route path='/login'  component={Login}></Route>
+                <Route path='/register'  component={Register}></Route>
             </Switch>
 		</BrowserRouter>
 	</Provider>),
