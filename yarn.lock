@@ -8,11 +8,7 @@
   dependencies:
     "@babel/types" "^7.0.0"
 
-<<<<<<< HEAD
 "@babel/runtime@^7.0.0", "@babel/runtime@^7.2.0":
-=======
-"@babel/runtime@^7.0.0":
->>>>>>> f3b33f12888e641e67c901b1ebb29307351a79ca
   version "7.2.0"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.2.0.tgz#b03e42eeddf5898e00646e4c840fa07ba8dcad7f"
   dependencies:
