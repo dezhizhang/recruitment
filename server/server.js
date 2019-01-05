@@ -1,30 +1,18 @@
 const express = require('express');
 const mongoose = require('mongoose');
-
-let url = 'mongodb://localhost:27017';
-
-mongoose.connect(url);
-mongoose.connection.on('connected',() => {
-    console.log('数据库连接成功');
-
-})
+const UserRouter = require('./user');
 
 
 //新建app
 let app = express();
 
-app.get('/',(req,res) => {
-    res.send('hello');
+//路由转发
+app.use('/user',UserRouter);
+
+
+
+
+app.listen('8082',() => {
+    console.log('服务器运行中');
 
 })
-
-app.get('/api/data',(req,res) => {
-    res.json({'name':'zhang','value':'123'});
-
-})
-
-app.listen('8082','localhost',() => {
-    console.log('node在运行中');
-
-});
-

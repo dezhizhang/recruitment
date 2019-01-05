@@ -5,6 +5,8 @@
   "dependencies": {
     "antd-mobile": "^2.0.0",
     "cookie-parser": "^1.4.3",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.2",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-redux": "^6.0.0",
