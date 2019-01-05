@@ -39,14 +39,18 @@ Router.post('/register',(req,res) => {
            return res.json({code:1,msg:'用户名重复'});
 
        }
-       User.create({user,type,pwd:utils.md5(pwd)},(e,d) => {
-           if(e){
-               return res.json({code:1,msg:'后端出错了'});
 
-           }
-           return res.json({code:0});
+       const userModel = new User({user,type,pwd:utils.md5(pwd)});
+       userModel.save((e,d) => {
+            if(e){
+                    return res.json({code:1,msg:'后端出错了'});
+            }
+            const { user,type,_id} = d;
+            res.cookie('userid',_id);
+            return res.json({code:0,data:{user,type,_id}});
 
        })
+      
    })
 
 
