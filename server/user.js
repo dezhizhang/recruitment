@@ -1,6 +1,7 @@
 const express = require('express');
 const Router = express.Router();
 const model = require('./model');
+const utils = require('utility');
 const User = model.getModel('user');
 
 
@@ -20,10 +21,10 @@ Router.post('/register',(req,res) => {
            return res.json({code:1,msg:'用户名重复'});
 
        }
-       User.create({user,pwd,type},(e,d) => {
+       User.create({user,type,pwd:utils.md5(pwd)},(e,d) => {
            if(e){
                return res.json({code:1,msg:'后端出错了'});
-
+               
            }
            return res.json({code:0});
 
