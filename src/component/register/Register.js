@@ -1,7 +1,9 @@
 import React from 'react';
 import styles from './Register.css';
-
+import { connect } from 'react-redux';
+import { register } from '../../redux/user';
 import { List, InputItem,WingBlank, WhiteSpace,Button,ImagePicker, Radio } from 'antd-mobile';
+
 
 const RadioItem = Radio.RadioItem;
 
@@ -20,7 +22,7 @@ class Register extends React.Component{
     }
 
     handleRegister = () => {
-        console.log(this.state);
+      this.props.register(this.state);
 
     }
     render(){
@@ -69,4 +71,12 @@ class Register extends React.Component{
 }
 
 
-export default Register;
+const mapStateToProps = (state) => {
+    return {
+        user:state.user
+    }
+}
+    
+
+
+export default connect(mapStateToProps,{ register })(Register);
