@@ -14,7 +14,14 @@ class Register extends React.Component{
     }
 
     handleChange = (key,value) => {
-        console.log(ev.targer)
+       this.setState({
+           [key]:value
+       })
+    }
+
+    handleRegister = () => {
+        console.log(this.state);
+
     }
     render(){
         return (<div>
@@ -25,21 +32,35 @@ class Register extends React.Component{
                </div>
              <List>   
                  <InputItem
-                  
+                    onChange={v=> this.handleChange('user',v)} 
                  >用　　户：</InputItem>
-                 <InputItem>密   　      码：</InputItem>
-                 <InputItem>确认密码：</InputItem>
+                 <InputItem
+                    type='password' 
+                    onChange={v=> this.handleChange('pwd',v)}
+                 >密   　      码：</InputItem>
+                 <InputItem
+                    type='password'
+                    onChange={v=> this.handleChange('repeatpwd',v)}
+                 >确认密码：</InputItem>
 
              </List> 
              <WhiteSpace/>
-             <RadioItem checked={this.state.type =='genius'}>
+             <RadioItem 
+                 checked={this.state.type =='genius'}
+                 onChange ={() => this.handleChange('type','genius')}
+             >
                 牛人
              </RadioItem>
-             <RadioItem checked={this.state.type == 'boss'}>
+             <RadioItem 
+                checked={this.state.type == 'boss'}
+                onChange={() => this.handleChange('type','boss')}
+            >
                 BOSS
              </RadioItem>
              <WingBlank>
-                <Button type="primary">
+                <Button type="primary"
+                 onClick={this.handleRegister}
+                >
                     注册
                 </Button>
              </WingBlank>
