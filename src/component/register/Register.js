@@ -18,9 +18,13 @@ class Register extends React.Component{
                  <InputItem>确认密码</InputItem>
 
              </List> 
-             <Button type="primary">
-                 注册
-             </Button>
+             <WhiteSpace/>
+             <WhiteSpace/>
+             <WingBlank>
+                <Button type="primary">
+                    注册
+                </Button>
+             </WingBlank>
         </div>)
     }
 }
