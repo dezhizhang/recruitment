@@ -6,12 +6,27 @@ const User = model.getModel('user');
 
 
 Router.get('/list',(req,res) => {
+    User.remove({});
+
    User.find({},(error,doc) => {
        return res.json(doc);
 
    })
 
 });
+
+Router.post('/login',(req,res) => {
+    const {user,pwd} = req.body;
+    User.findOne({user:user,pwd:utils.md5(pwd)},(err,doc) => {
+        if(!doc){
+            return res.json({code:1,msg:'用户名或密码错误'});
+
+        }
+        return res.json({code:0,data:doc});
+
+    })
+
+})
 
 Router.post('/register',(req,res) => {
 
@@ -24,7 +39,7 @@ Router.post('/register',(req,res) => {
        User.create({user,type,pwd:utils.md5(pwd)},(e,d) => {
            if(e){
                return res.json({code:1,msg:'后端出错了'});
-               
+
            }
            return res.json({code:0});
 
@@ -33,6 +48,9 @@ Router.post('/register',(req,res) => {
 
 
 })
+
+
+
 Router.get('/info',(req,res) => {
     return res.json({code:1});
 
