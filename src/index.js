@@ -20,11 +20,11 @@ const store = createStore(reducers, compose(
 ReactDom.render(
 	(<Provider store={store}>
 		<BrowserRouter>
-			<Switch>
-				<Route exact path='/' component={AuthRouter}></Route>
-                <Route exact path='/login'  component={Login}></Route>
-                <Route exact path='/register'  component={Register}></Route>
-            </Switch>
+			<div>
+				<AuthRouter/>
+                <Route  path='/login'  component={Login}></Route>
+                <Route  path='/register'  component={Register}></Route>
+            </div>
 		</BrowserRouter>
 	</Provider>),
 	document.getElementById('root')
