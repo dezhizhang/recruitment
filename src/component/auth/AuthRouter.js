@@ -22,8 +22,11 @@ class Auth extends React.Component{
                  if(res.status == 200){
                     if(res.data.code == 0){
                         //有户登录
+                        //console.log(res.data.data);
+
+                        this.props.loadData(res.data.data)
                     } else {
-                      this.props.loadData(res.data.data)
+                     
                       this.props.history.push('/login')
 
 

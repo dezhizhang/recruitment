@@ -12,7 +12,6 @@ const initState = {
     isAuth:false,
     msg:'',
     user:'',
-    pwd:'',
     type:''
 }
 
@@ -30,6 +29,8 @@ function loginSuccess(data){
 }
 
 
+
+ 
 //reducer
 export function user(state = initState,action){
     switch(action.type){
@@ -50,10 +51,6 @@ export function user(state = initState,action){
 
 }
 
-
-export function loadData(userinfo){
-   return { msg:LOAD_DATA,payload:userinfo }
-}
 
 export function login({user,pwd}){
     if(!user || !pwd){
@@ -102,4 +99,9 @@ export function register({user,pwd,repeatpwd,type}){
 
     
 }
+
+export function loadData(userinfo){
+
+    return { msg:LOAD_DATA,payload:userinfo,type:'' }
+ }
 
