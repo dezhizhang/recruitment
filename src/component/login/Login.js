@@ -35,6 +35,8 @@ class Login extends React.Component{
     }
     render(){
         const { files } = this.state;
+        console.log(this.props);
+        
         return (
             <div className={styles.wrapper}>
                <div className={styles.userImg}>

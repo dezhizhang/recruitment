@@ -11,7 +11,9 @@ Router.get('/list',(req,res) => {
    User.find({},(error,doc) => {
        return res.json(doc);
 
-   })
+   });
+
+    
 
 });
 
@@ -28,6 +30,28 @@ Router.post('/login',(req,res) => {
     })
 
 });
+
+Router.post('/update',(req,res) => {
+    const userid = req.cookies.userid;
+    if(!userid){
+        return res.json({code:1});
+
+    }
+
+   let result = req.body;
+   User.findByIdAndUpdate(userid,result,(err,doc) => {
+       let data = Object.assign({},{
+           user:doc.user,
+           type:doc.type
+       },result);
+
+       return res.json({code:0,data})
+
+
+   })
+
+
+})
 
 
 

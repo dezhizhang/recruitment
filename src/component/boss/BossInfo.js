@@ -3,6 +3,7 @@ import styles from './BossInfo.css';
 import { NavBar, InputItem,TextareaItem,Button  } from 'antd-mobile';
 import AvatarSelector from '../avatar/AvatarSelector';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { update } from '../../redux/user';
 
 
@@ -13,6 +14,7 @@ class BossInfo extends React.Component{
         company:'',
         money:'',
         desc:'',
+        avatar:''
     }
     handleChange = (key,value) => {
         this.setState({
@@ -20,13 +22,20 @@ class BossInfo extends React.Component{
         })
     }
     render(){
+        
         return(
             <div className={styles.wrapper}>
                 <NavBar
                 mode="dark">
                     BOSS信息完善页
                 </NavBar>
-                <AvatarSelector/>
+                <AvatarSelector
+                 selectAvatar ={(imgname) => {
+                     this.setState({
+                         avatar:imgname
+                     })
+                 }}
+                />
                 <InputItem
                  onChange={(v) => this.handleChange('title',v)}
                 >
