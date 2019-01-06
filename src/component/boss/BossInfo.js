@@ -1,7 +1,10 @@
 import React from 'react';
 import styles from './BossInfo.css';
-import { NavBar, InputItem,TextareaItem,Button  } from 'antd-mobile'
-import AvatarSelector from '../avatar/AvatarSelector'
+import { NavBar, InputItem,TextareaItem,Button  } from 'antd-mobile';
+import AvatarSelector from '../avatar/AvatarSelector';
+import { connect } from 'react-redux';
+import { update } from '../../redux/user';
+
 
 
 class BossInfo extends React.Component{
@@ -47,10 +50,19 @@ class BossInfo extends React.Component{
                 >
                     
                 </TextareaItem >
-                <Button type='primary'>提交</Button>
+                <Button type='primary'
+                 onClick={() => this.props.update(this.state)}
+                >保存
+                </Button>
             </div>
         )
     }
 }
 
-export default BossInfo;
+const mapStateToProps = (state) => {
+    return {
+        user:state.user
+    }
+}
+
+export default connect(mapStateToProps,{ update })(BossInfo);
