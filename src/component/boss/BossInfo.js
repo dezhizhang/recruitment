@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './BossInfo.css';
-import { NavBar, InputItem } from 'antd-mobile'
+import { NavBar, InputItem,TextareaItem,Button  } from 'antd-mobile'
 import AvatarSelector from '../avatar/AvatarSelector'
 
 
@@ -39,11 +39,15 @@ class BossInfo extends React.Component{
                 >
                     职位新资
                 </InputItem>
-                <InputItem
-                 onChange={(v) => this.handleChange('desc',v)}
+                <TextareaItem
+                rows={3}
+                autoHeight={true}
+                title='职位要求'
+                onChange={(v) => this.handleChange('desc',v)}
                 >
-                    职位要求
-                </InputItem>
+                    
+                </TextareaItem >
+                <Button type='primary'>提交</Button>
             </div>
         )
     }
